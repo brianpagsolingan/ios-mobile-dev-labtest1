@@ -11,11 +11,11 @@ struct ContentView: View {
     private var currentNumber: Int = Int.random(in: 1...100)
     @State private var answerState: Answer = .none
     @State private var correctCount: Int = 0
-    private var wrongCount: Int = 0
-    private var attemptCount: Int = 0
-    private var showSummary: Bool = false
-    private var timeRemaining: Int = 5
-    private var timer: Timer? = nil
+    @State private var wrongCount: Int = 0
+    @State private var attemptCount: Int = 0
+    @State private var showSummary: Bool = false
+    @State private var timeRemaining: Int = 5
+    @State private var timer: Timer? = nil
     @State private var answered: Bool = false
     var body: some View {
         VStack {
@@ -36,7 +36,7 @@ struct ContentView: View {
         withAnimation{
             answerState = correct ? .correct : .wrong
         }
-        if correct {correctCount += 1}
+        if correct {correctCount += 1} else {wrongCount += 1}
         
     }
 }
