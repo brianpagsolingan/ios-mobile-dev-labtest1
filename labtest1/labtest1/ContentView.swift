@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var currentNumber: Int = Int.random(in: 1...100)
+    @State private var currentNumber: Int = Int.random(in: 1...100)
     @State private var answerState: Answer = .none
     @State private var correctCount: Int = 0
     @State private var wrongCount: Int = 0
@@ -59,6 +59,26 @@ struct ContentView: View {
         currentNumber = Int.random(in: 1...100)
         timeRemaining = 5
         startTimer()
+    }
+    
+    private func startTimer(){
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){
+            _ in if timeRemaining > 1{
+                timeRemaining -= 1
+            }else{
+                // ran out of time
+                timer?.invalidate()
+                answered = true
+                withAnimation{
+                    answerState = .wrong
+                }
+                wrongCount += 1
+                attemptCount += 1
+                checkMileStone()
+            }
+        }
+        
     }
 }
 
