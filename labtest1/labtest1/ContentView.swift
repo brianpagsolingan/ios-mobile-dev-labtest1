@@ -69,6 +69,16 @@ struct ContentView: View {
             .animation(.spring(response: 0.4, dampingFraction: 0.6), value: answerState)
             Spacer()
             
+            // result counter
+            HStack{
+                Text("Correct: \(correctCount)  Wrong: \(wrongCount)")
+                    .font(.system(size: 15, weight: .medium, design: .rounded))
+                    .foregroundColor(.gray)
+                    .padding(.leading, 24)
+                    .padding(.bottom, 20)
+            }
+            Spacer()
+            
         }
         .padding()
     }
