@@ -38,7 +38,19 @@ struct ContentView: View {
         }
         if correct {correctCount += 1} else {wrongCount += 1}
         
+        attemptCount += 1
+        
+        checkMileStone()
+        
     }
+    
+    private func checkMileStone() {
+        // show score after 10 answers
+        if attemptCount % 10 == 0 {
+            showSummary = true
+        }
+    }
+    
 }
 
 // Rpime number checker
