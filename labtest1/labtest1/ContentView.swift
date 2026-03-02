@@ -84,7 +84,17 @@ struct ContentView: View {
                 .padding(.bottom, 20)
             
         }
-        .padding()
+        .onAppear{startTimer()}
+        .alert("Round Complete!", isPresented: $showSummary){
+            Button("Play again"){
+                correctCount = 0
+                wrongCount = 0
+                showSummary = false
+            }
+        }message: {
+            Text("Your score is: \(correctCount) / 10")
+        }
+        
     }
     
     private func handleAnswer(userSaysPrime: Bool) {
