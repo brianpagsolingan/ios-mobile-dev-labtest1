@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     private var currentNumber: Int = Int.random(in: 1...100)
-    private var answerState: Answer = .none
-    private var correctCount: Int = 0
+    @State private var answerState: Answer = .none
+    @State private var correctCount: Int = 0
     private var wrongCount: Int = 0
     private var attemptCount: Int = 0
     private var showSummary: Bool = false
     private var timeRemaining: Int = 5
     private var timer: Timer? = nil
-    private var answered: Bool = false
+    @State private var answered: Bool = false
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -25,6 +25,19 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+    }
+    
+    private func handleAnswer(userSaysPrime: Bool) {
+        guard !answered else { return }
+        answered = true
+        timer?.invalidate()
+        
+        let correct = isPrime(currentNumber) == userSaysPrime
+        withAnimation{
+            answerState = correct ? .correct : .wrong
+        }
+        if correct {correctCount += 1}
+        
     }
 }
 
