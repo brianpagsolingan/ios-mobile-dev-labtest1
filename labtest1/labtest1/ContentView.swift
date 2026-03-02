@@ -51,6 +51,15 @@ struct ContentView: View {
         }
     }
     
+    private func nextNumber(){
+        withAnimation{
+            answerState = .none
+        }
+        answered = false
+        currentNumber = Int.random(in: 1...100)
+        timeRemaining = 5
+        startTimer()
+    }
 }
 
 // Rpime number checker
