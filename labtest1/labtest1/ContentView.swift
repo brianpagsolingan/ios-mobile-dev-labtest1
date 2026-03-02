@@ -18,11 +18,17 @@ struct ContentView: View {
     @State private var timer: Timer? = nil
     @State private var answered: Bool = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 0) {
+            // timer
+            HStack{
+                Spacer()
+                Text("Timer: \(timeRemaining)")
+                    .font(.system(size: 18, weight:.semibold, design: .rounded))
+                    .padding(.trailing, 24)
+                    .padding(.top, 16)
+            }
+            Spacer()
+            
         }
         .padding()
     }
