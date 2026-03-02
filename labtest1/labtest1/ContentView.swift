@@ -22,7 +22,7 @@ struct ContentView: View {
             // timer
             HStack{
                 Spacer()
-                Text("Timer: \(timeRemaining)")
+                Text("🕰️ \(timeRemaining)s")
                     .font(.system(size: 18, weight:.semibold, design: .rounded))
                     .padding(.trailing, 24)
                     .padding(.top, 16)
@@ -71,13 +71,17 @@ struct ContentView: View {
             
             // result counter
             HStack{
-                Text("Correct: \(correctCount)  Wrong: \(wrongCount)")
+                Text("✅ \(correctCount)             ❌\(wrongCount)")
                     .font(.system(size: 15, weight: .medium, design: .rounded))
                     .foregroundColor(.gray)
                     .padding(.leading, 24)
                     .padding(.bottom, 20)
             }
             Spacer()
+            Text("Attempt \(attemptCount)")
+                .font(.system(size: 13,weight: .regular, design: .rounded))
+                .foregroundColor(.gray)
+                .padding(.bottom, 20)
             
         }
         .padding()
