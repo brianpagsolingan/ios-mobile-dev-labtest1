@@ -49,7 +49,21 @@ struct ContentView: View {
             }
             .disabled(answered)
             
-            
+            ZStack{
+                if answerState == .correct{
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 60, weight: .bold))
+                        .foregroundColor(Color.green)
+                        .transition(.scale.combined(with: .opacity))
+                    
+                }else if answerState == .wrong{
+                    Image(systemName: "xmark")
+                        .font(.system(size: 60, weight: .bold))
+                        .foregroundColor(Color.red)
+                        .transition(.scale.combined(with: .opcaity))
+                }
+                
+            }
             
         }
         .padding()
