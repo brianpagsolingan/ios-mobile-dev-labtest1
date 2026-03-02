@@ -89,7 +89,9 @@ struct ContentView: View {
             Button("Play again"){
                 correctCount = 0
                 wrongCount = 0
+                attemptCount = 0
                 showSummary = false
+                nextNumber()
             }
         }message: {
             Text("Your score is: \(correctCount) / 10")
@@ -119,7 +121,7 @@ struct ContentView: View {
     
     private func checkMileStone() {
         // show score after 10 answers
-        if attemptCount % 10 == 0 {
+        if attemptCount == 0 {
             showSummary = true
         }
     }
