@@ -111,6 +111,9 @@ struct ContentView: View {
         attemptCount += 1
         
         checkMileStone()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            if !showSummary{nextNumber()}
+        }
         
     }
     
@@ -146,6 +149,9 @@ struct ContentView: View {
                 wrongCount += 1
                 attemptCount += 1
                 checkMileStone()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                    if !showSummary{nextNumber()}
+                }
             }
         }
         
