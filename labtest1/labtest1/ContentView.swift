@@ -29,6 +29,13 @@ struct ContentView: View {
             }
             Spacer()
             
+            // number display
+            Text("\(currentNumber)")
+                .font(.custom("Arial", size: 90))
+                .padding(.bottom, 60)
+            
+            // Prime button
+            
         }
         .padding()
     }
