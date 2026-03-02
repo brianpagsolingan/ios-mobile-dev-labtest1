@@ -35,6 +35,14 @@ struct ContentView: View {
                 .padding(.bottom, 60)
             
             // Prime button
+            Button(action: {handleAnswer(userSaysPrime: true)}){
+                Text("Prime")
+                    .font(.custom("Arial", size: 36))
+            }
+            .disabled(answered)
+            .padding(.bottom, 24)
+            
+            // not Prime button
             
         }
         .padding()
