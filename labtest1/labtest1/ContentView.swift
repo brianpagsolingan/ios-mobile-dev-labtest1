@@ -121,7 +121,7 @@ struct ContentView: View {
     
     private func checkMileStone() {
         // show score after 10 answers
-        if attemptCount == 0 {
+        if attemptCount % 10 == 0 {
             showSummary = true
         }
     }
