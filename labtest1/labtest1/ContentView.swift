@@ -49,6 +49,7 @@ struct ContentView: View {
             }
             .disabled(answered)
             
+            // result icon
             ZStack{
                 if answerState == .correct{
                     Image(systemName: "checkmark")
@@ -60,10 +61,13 @@ struct ContentView: View {
                     Image(systemName: "xmark")
                         .font(.system(size: 60, weight: .bold))
                         .foregroundColor(Color.red)
-                        .transition(.scale.combined(with: .opcaity))
+                        .transition(.scale.combined(with: .opacity))
                 }
                 
             }
+            .frame(height: 100)
+            .animation(.spring(response: 0.4, dampingFraction: 0.6), value: answerState)
+            Spacer()
             
         }
         .padding()
