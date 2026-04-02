@@ -17,6 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+    func preloadData() {
+        let defaults = UserDefaults.standard
+        
+        // run once on first launc
+        guard !defaults.bool(forKey: "dataLoaded") else {return}
+        
+        let context = persistentContainer.viewContext
+        
+        let products: [[String: Any]] = [
+            ["id": 1, "name": "iPhone 17", "desc": "Apple smartphone", "price": 1999.99, "provider": "Apple"],
+            ["id": 2, "name": "Samsung Galaxy S26 Ultra", "desc": "Samsung smartphone", "price": 1999.99, "provider": "Samsung"],
+            ["id": 3, "name": "Pixel 10 Pro", "desc": "Google smartphone", "price": 1999.99, "provider": "Google"]
+        ]
+        
+        for p in products{
+            let entity = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
+            entity.setValue(p["id"], forKey: "productID")
+            entity.setValue(p["name"], forKey: "productName")
+            entity.setValue(p["desc"], forKey: "productDescription")
+            entity.setValue(p["price"], forKey: "productPrice")
+            entity.setValue(p["provider"], forKey: "productProvider")
+        }
+        
+        do{
+            try context.save()
+            defaults.set(true, forKey: "dataLoaded")
+            print("sample data dloaded")
+        }catch{
+            print("failed to load sample data \(error)")
+        }
+    }
 
     // MARK: UISceneSession Lifecycle
 
