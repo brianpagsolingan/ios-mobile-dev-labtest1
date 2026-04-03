@@ -31,6 +31,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
         fetchProducts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchProducts()
+    }
+    // MARK: FETCH
     func fetchProducts(filter: String = ""){
         let request = NSFetchRequest<NSManagedObject>(entityName: "Product")
         request.sortDescriptors = [NSSortDescriptor(key: "productID", ascending: true)]
@@ -50,6 +55,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
+    // MARK: SHOW PRODUCT
     func showProduct(){
         guard !products.isEmpty else {
             lblID.text = "No products found"
@@ -71,7 +77,40 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         lblProvider.text = p.value(forKey: "productProvider") as? String
     }
-
-
+    
+    // MARK: - NAVIGATION
+    @IBAction func prevTapped(_ sender: UIButton) {
+        if currentIndex > 0 {
+            currentIndex -= 1
+            showProduct()
+        }
+    }
+    
+    @IBAction func nextTapped(_ sender: UIButton) {
+        if currentIndex < products.count - 1 {
+            currentIndex += 1
+            showProduct()
+        }
+    }
+    
+    // MARK: - Search
+    
+    func searchBarButtonClicked(_ searchBar: UISearchBar){
+        searchBar.resignFirstResponder()
+        let query = searchBar.text ?? ""
+        fetchProducts(filter: query)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        fetchProducts()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        if searchText.isEmpty {
+            fetchProducts()
+        }
+    }
 }
 
