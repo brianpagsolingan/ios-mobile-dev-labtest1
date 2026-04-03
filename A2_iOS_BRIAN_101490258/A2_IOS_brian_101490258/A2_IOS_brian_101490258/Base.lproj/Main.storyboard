@@ -208,6 +208,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save Product"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="olw-1v-LfP" eventType="touchUpInside" id="O9m-gX-ofH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZM7-bY-gUl">
                                 <rect key="frame" x="56" y="225" width="50" height="21"/>
@@ -266,6 +269,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="cfr-d4-HBW"/>
+                    <connections>
+                        <outlet property="txtDescription" destination="ybV-S2-Aqj" id="HfR-l9-jHu"/>
+                        <outlet property="txtName" destination="Kh7-fs-kxd" id="u0m-UK-M6l"/>
+                        <outlet property="txtPrice" destination="BBK-kg-mBA" id="qsd-XY-HAm"/>
+                        <outlet property="txtProvider" destination="KxY-lS-O3a" id="g8P-xp-gu4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjc-Yl-hPI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
