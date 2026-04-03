@@ -67,7 +67,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
         
         let p = products[currentIndex]
-        lblID.text = p.value(forKey: "productID") as? String
+        if let id = p.value(forKey: "productID") as? Int64 {
+            lblID.text = "\(id)"
+        }
         lblName.text = p.value(forKey: "productName") as? String
         lblDesc.text = p.value(forKey: "productDescription") as? String
         
@@ -95,7 +97,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     // MARK: - Search
     
-    func searchBarButtonClicked(_ searchBar: UISearchBar){
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         searchBar.resignFirstResponder()
         let query = searchBar.text ?? ""
         fetchProducts(filter: query)
