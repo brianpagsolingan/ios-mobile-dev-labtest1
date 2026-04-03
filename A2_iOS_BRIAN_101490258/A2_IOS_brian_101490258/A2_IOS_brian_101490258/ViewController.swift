@@ -28,6 +28,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         // Do any additional setup after loading the view.
         title = "Product Viewer"
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
         fetchProducts()
     }
     

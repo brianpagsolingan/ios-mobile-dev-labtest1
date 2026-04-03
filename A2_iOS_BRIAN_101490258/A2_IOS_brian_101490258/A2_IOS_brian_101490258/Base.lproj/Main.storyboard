@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="91" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="WAN-Rf-ZyI">
+                                    <navigationItem id="WAN-Rf-ZyI">
                                         <barButtonItem key="leftBarButtonItem" title="List" id="2rs-77-srD">
                                             <connections>
                                                 <segue destination="7FC-Sj-554" kind="show" id="RIN-El-hYW"/>
@@ -195,10 +195,10 @@
             </objects>
             <point key="canvasLocation" x="1990" y="126"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Product View Controller-->
         <scene sceneID="q9N-Na-XCn">
             <objects>
-                <viewController id="olw-1v-LfP" sceneMemberID="viewController">
+                <viewController id="olw-1v-LfP" customClass="AddProductViewController" customModule="A2_IOS_brian_101490258" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Gs-Hy-00P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
