@@ -129,6 +129,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="YV0-63-w5G"/>
+                    <connections>
+                        <outlet property="btnNext" destination="U9f-Dh-PZY" id="E6W-J7-hlG"/>
+                        <outlet property="btnPrev" destination="CIE-56-tXz" id="RN9-Kn-ZCF"/>
+                        <outlet property="lblDesc" destination="GFi-jt-kCc" id="uxp-7d-yBg"/>
+                        <outlet property="lblID" destination="Gg1-gP-G6j" id="Q3F-82-K39"/>
+                        <outlet property="lblName" destination="PB6-4A-0BG" id="u1W-68-Ocp"/>
+                        <outlet property="lblPrice" destination="rSP-zM-WPp" id="7GO-PS-Yyv"/>
+                        <outlet property="lblProvider" destination="aS1-Sb-Dbq" id="yYI-sw-KpZ"/>
+                        <outlet property="searchBar" destination="50d-4s-yFA" id="5Lg-1Z-zOK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
