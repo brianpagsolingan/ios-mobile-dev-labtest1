@@ -31,7 +31,46 @@ class ViewController: UIViewController, UISearchBarDelegate {
         fetchProducts()
     }
     
+    func fetchProducts(filter: String = ""){
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Product")
+        request.sortDescriptors = [NSSortDescriptor(key: "productID", ascending: true)]
+        
+        if !filter.isEmpty {
+            request.predicate = NSPredicate(
+                format: "productName CONTAINS[cd] %@ OR productDescription CONTAINS[cd] %@", filter, filter
+            )
+        }
+        
+        do {
+            products = try context.fetch(request)
+            currentIndex = 0
+            showProduct()
+        }catch{
+            print("Error fetching data: \(error)")
+        }
+    }
     
+    func showProduct(){
+        guard !products.isEmpty else {
+            lblID.text = "No products found"
+            lblName.text = ""
+            lblDesc.text = ""
+            lblPrice.text = ""
+            lblProvider.text = ""
+            return
+        }
+        
+        let p = products[currentIndex]
+        lblID.text = p.value(forKey: "productID") as? String
+        lblName.text = p.value(forKey: "productName") as? String
+        lblDesc.text = p.value(forKey: "productDescription") as? String
+        
+        if let price = p.value(forKey: "productPrice") as? Double {
+            lblPrice.text = String(format: "$%.2f", price)
+        }
+        
+        lblProvider.text = p.value(forKey: "productProvider") as? String
+    }
 
 
 }
